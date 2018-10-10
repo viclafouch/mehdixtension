@@ -1,0 +1,22 @@
+{
+  "name": "medhixtension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viclafouch/mehdixtension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viclafouch/mehdixtension/issues"
+  },
+  "homepage": "https://github.com/viclafouch/mehdixtension#readme",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  }
+}
