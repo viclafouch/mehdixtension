@@ -7,7 +7,6 @@
     "permissions": [
         "activeTab",
         "contextMenus",
-        "storage",
         "https://www.victor-de-la-fouchardiere.fr/"
     ],
     "browser_action": {
