@@ -1,0 +1,41 @@
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    width: 300px;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    font-size: 18px;
+    color: #444;
+}
+
+form#hashForm {
+    margin: 5px;
+}
+
+form#hashForm input, form#hashForm select {
+    width: 100%;
+    padding: 3px 5px;
+    margin-bottom: 10px;
+}
+
+form#hashForm button {
+    padding: 3px;
+    cursor: pointer;
+}
+
+span#hash {
+    margin: 5px;
+    padding-top: 10px;
+    display: block;
+    color: green;
+    word-break: break-all;
+}

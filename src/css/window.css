@@ -1,0 +1,18 @@
+.window-mehdixtension {
+    padding: 10px;
+    word-wrap: break-word;
+    width: 100%;
+    max-width: 300px;
+    background-color: white;
+    z-index: 99999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+    font-family: arial;
+}
+.window-mehdixtension h1 {
+   font-size: arial;
+}
+.window-mehdixtension p {
+   margin: 0;
+}

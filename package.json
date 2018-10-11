@@ -18,7 +18,8 @@
   "homepage": "https://github.com/viclafouch/mehdixtension#readme",
   "dependencies": {
     "crypto-js": "^3.1.9-1",
-    "gulp-browserify": "^0.5.1"
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean-css": "^3.10.0"
   },
   "devDependencies": {
     "gulp": "^4.0.0",

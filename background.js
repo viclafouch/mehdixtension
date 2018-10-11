@@ -1,20 +1,17 @@
+var browser = browser || chrome
+
 let contextMenuItem = {
     type: "normal",
     id: "Extension",
-    visible: true,
     enabled: true,
     title: "Hasher",
     contexts: ['selection']
 }
 
-chrome.contextMenus.create(contextMenuItem)
+browser.contextMenus.create(contextMenuItem)
 
-chrome.contextMenus.onClicked.addListener(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, { type: "getText" }, function (response) {
-            if (response) {
-                alert(response)
-            }
-        });
+browser.contextMenus.onClicked.addListener(() => {
+    browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        browser.tabs.sendMessage(tabs[0].id, { type: "getText", test: 'lol' });
     });
 })

@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            body {
-                background: red;
-            }
-        </style>
+        <link rel="stylesheet" href="build/popup.css">
+        <meta charset="utf-8">
     </head>
     <body>
+        <h1>Mehdixtension</h1>
         <form id="hashForm">
-            <input placeholder="Text" type="text" />
-            <button>Hasher</button>
+            <input placeholder="Text" name="content" type="text" />
+            <select name="type">
+                <option value="sha256">sha256</option>
+                <option value="md5">md5</option>
+                <option value="whirlpool">whirlpool (parce que ce mot est stylé)</option>
+            </select>
+            <button type="submit">Hasher</button>
         </form>
+        <span id="hash"></span>
+        <script src="build/main.js"></script>
     </body>
 </html>
