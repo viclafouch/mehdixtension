@@ -1,3 +1,5 @@
+var SHA256 = require("crypto-js/sha256");
+
 function getSelectionTextHashed() {
     let text = "ss";
     if (window.getSelection) {
@@ -6,7 +8,7 @@ function getSelectionTextHashed() {
         text = document.selection.createRange().text;
     }
 
-    return text;
+    return SHA256(text).toString();
 }
 
 chrome.runtime.onMessage.addListener(

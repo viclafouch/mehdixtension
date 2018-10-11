@@ -13,7 +13,7 @@
         "default_title": "MehdiExtension"
     },
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["build/background.js"],
         "persistent": false
     },
     "content_scripts": [
@@ -22,7 +22,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "src/js/main.js"
+                "build/main.js"
             ]
         }
     ]
