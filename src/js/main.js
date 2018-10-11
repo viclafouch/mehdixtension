@@ -1,8 +1,11 @@
 var SHA256 = require("crypto-js/sha256");
 var browser = browser || chrome
 
+/**
+ * Hash the selected range
+ */
 function getSelectionTextHashed() {
-    let text = "ss";
+    let text = "";
     if (window.getSelection) {
         text = window.getSelection().toString();
     } else if (document.selection && document.selection.type != "Control") {
@@ -11,7 +14,11 @@ function getSelectionTextHashed() {
     return SHA256(text).toString();
 }
 
-function createPopup() {
+/**
+ * Create a window in position of the selected range
+ * @param {string} content
+ */
+function createPopup(content) {
 
     let s = window.getSelection();
     let oRange = s.getRangeAt(0);
@@ -32,7 +39,7 @@ function createPopup() {
 
     closeSpan.addEventListener('click', () => removePopup(), false)
 
-    p.textContent = getSelectionTextHashed();
+    p.textContent = content;
     div.append(p);
     div.classList.add('window-mehdixtension');
     div.style.visibility = 'hidden';
@@ -41,6 +48,7 @@ function createPopup() {
 
     div.style.position = 'absolute';
 
+    // Ignore click event
     div.addEventListener('click', function(e) {
         e.stopPropagation();
     });
@@ -50,12 +58,13 @@ function createPopup() {
     // le petit doliprane entre mes calculs <3
     div.style.left = (oRect.left + (widthRect / 2)) - (div.offsetWidth / 2) + 'px';
     div.style.top = window.scrollY + oRect.top + heightRect + 10 + 'px';
-    div // wait DOM position
+    div.getBoundingClientRect(); // waiting DOM position completed
     div.style.visibility = 'visible';
 }
 
-document.body.addEventListener('click', () => removePopup(), false)
-
+/**
+ * Remove the window if exists
+ */
 function removePopup() {
     let actualWindow = document.getElementById('windowMehdixtension');
     if (actualWindow) {
@@ -63,16 +72,26 @@ function removePopup() {
     }
 }
 
+document.body.addEventListener('click', () => removePopup(), false)
+
+/**
+ * Listen if browser received a message from background.js
+ */
 browser.runtime.onMessage.addListener(
-    function (message, sender, sendResponse) {
+    function (message) {
         switch (message.type) {
-            case "getText":
-                createPopup();
+            case "getHash":
+                createPopup(getSelectionTextHashed());
                 break;
         }
     }
 );
 
+
+/**
+ * Popup extension
+ * Fetch when form is submitted and display hash
+ */
 if (document.getElementById('hashForm')) {
     let form = document.getElementById('hashForm');
     let hashInput = form.getElementsByTagName('input')[0];
