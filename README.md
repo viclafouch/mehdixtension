@@ -6,7 +6,7 @@ Available on Chrome and Firefox.
 ## Setup
 
 ``` bash
-# install dependencies
+# Clone project
 git clone https://github.com/viclafouch/mehdixtension
 ```
 
