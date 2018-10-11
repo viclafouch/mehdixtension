@@ -2,6 +2,7 @@
     "manifest_version": 2,
     "name": "Mehdixtension",
     "description": "L'extension qui mehdash un texte",
+    "author": "Victor de la Fouchardiere",
     "version": "1.0",
     "permissions": [
         "activeTab",
@@ -12,6 +13,11 @@
     "browser_action": {
         "default_popup": "popup.html",
         "default_title": "Mehdixtension"
+    },
+    "icons": {
+        "16": "src/icons/icon16.png",
+        "48": "src/icons/icon48.png",
+        "128": "src/icons/icon128.png"
     },
     "background": {
         "scripts": ["build/background.js"]

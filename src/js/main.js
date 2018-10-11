@@ -16,6 +16,8 @@ function createPopup() {
     let s = window.getSelection();
     let oRange = s.getRangeAt(0);
     let oRect = oRange.getBoundingClientRect();
+    let widthRect = oRect.right - oRect.left;
+    let heightRect = oRect.bottom - oRect.top;
 
     let div = document.createElement('div');
     let p = document.createElement('p');
@@ -24,23 +26,47 @@ function createPopup() {
     h1.textContent = "mehdixtension"
     div.append(h1);
 
+    let closeSpan = document.createElement('span');
+    closeSpan.classList.add('close-window');
+    div.append(closeSpan);
+
+    closeSpan.addEventListener('click', () => removePopup(), false)
+
     p.textContent = getSelectionTextHashed();
     div.append(p);
+    div.classList.add('window-mehdixtension');
+    div.style.visibility = 'hidden';
+
+    div.id = "windowMehdixtension"
 
     div.style.position = 'absolute';
-    div.style.left = oRect.left + 'px';
-    div.style.right = oRect.right + 'px';
-    div.style.top = oRect.top + 'px';
-    div.classList.add('window-mehdixtension');
 
-    return document.body.append(div);
+    div.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    document.body.append(div);
+
+    // le petit doliprane entre mes calculs <3
+    div.style.left = (oRect.left + (widthRect / 2)) - (div.offsetWidth / 2) + 'px';
+    div.style.top = window.scrollY + oRect.top + heightRect + 10 + 'px';
+    div // wait DOM position
+    div.style.visibility = 'visible';
+}
+
+document.body.addEventListener('click', () => removePopup(), false)
+
+function removePopup() {
+    let actualWindow = document.getElementById('windowMehdixtension');
+    if (actualWindow) {
+        actualWindow.parentNode.removeChild(actualWindow);
+    }
 }
 
 browser.runtime.onMessage.addListener(
     function (message, sender, sendResponse) {
         switch (message.type) {
             case "getText":
-                // console.log(getSelectionTextHashed());
                 createPopup();
                 break;
         }
